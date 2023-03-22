@@ -2,6 +2,7 @@ package com.epam.mjc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class MethodParser {
 
@@ -30,8 +31,21 @@ public class MethodParser {
         List<MethodSignature.Argument> arguments = new ArrayList<>(List.of());
         MethodSignature method = new MethodSignature(accessModifier, arguments);
 
-        String string1 = signalString.split("[()]")[0];
-        String[] string2 = string1.split(" ");
+        String q = "";
+        String w = "";
+        int i = 0;
+        StringTokenizer st = new StringTokenizer(signalString, "(");
+        while(st.hasMoreTokens()) {
+            if (i == 0){
+                 q = st.nextToken();
+            }
+            if (i == 1) {
+                 w = st.nextToken();
+            }
+            i++;
+        }
+
+        String[] string2 = q.split(" ");
 
         if(string2.length == 3) {
             method.setAccessModifier(string2[0]);
@@ -43,8 +57,8 @@ public class MethodParser {
             method.setMethodName(string2[1]);
         }
 
-        String sk = signalString.split("[()]")[1];
-        String[] arg = sk.split(",");
+        String e = w.replace(')', ' ');
+        String[] arg = e.split(",");
 
         for (String s : arg) {
             String ss = s.trim();
