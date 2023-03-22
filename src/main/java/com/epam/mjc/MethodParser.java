@@ -29,8 +29,8 @@ public class MethodParser {
         MethodSignature.Argument argument;
         List<MethodSignature.Argument> arguments = new ArrayList<>(List.of());
         MethodSignature method = new MethodSignature(accessModifier, arguments);
-        
-        String[] parts = signalString.split("\\(");
+
+        String[] parts = signatureString.split("\\(");
         String q = parts[0];
         String w = parts[1];
 
