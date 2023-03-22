@@ -24,13 +24,13 @@ public class MethodParser {
      */
     public MethodSignature parseFunction(String signatureString) {
         String accessModifier = " ";
-        String type = " ";
-        String name = " ";
-        MethodSignature.Argument argument = null;
+        String type;
+        String name;
+        MethodSignature.Argument argument;
         List<MethodSignature.Argument> arguments = new ArrayList<>(List.of());
         MethodSignature method = new MethodSignature(accessModifier, arguments);
 
-        String string1 = signalString.split("[\\(\\)]")[0];
+        String string1 = signalString.split("[()]")[0];
         String[] string2 = string1.split(" ");
 
         if(string2.length == 3) {
@@ -43,7 +43,7 @@ public class MethodParser {
             method.setMethodName(string2[1]);
         }
 
-        String sk = signalString.split("[\\(\\)]")[1];
+        String sk = signalString.split("[()]")[1];
         String[] arg = sk.split(",");
 
         for (String s : arg) {
