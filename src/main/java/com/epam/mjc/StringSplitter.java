@@ -26,6 +26,7 @@ public class StringSplitter {
 
         String[] string = source2.split(" ");
         for (int i = 0; i < string.length; i++) {
+            if (string[i] != "")
             result.add(string[i]);
         }
 
