@@ -48,13 +48,15 @@ public class MethodParser {
         String e = w.replace(')', ' ');
         String[] arg = e.split(",");
 
-        for (String s : arg) {
-            String ss = s.trim();
-            String[] argI = ss.split(" ");
-            type = argI[0];
-            name = argI[1];
-            argument = new MethodSignature.Argument(type, name);
-            arguments.add(argument);
+        if(arg.length-1 != 0) {
+            for (String s : arg) {
+                String ss = s.trim();
+                String[] argI = ss.split(" ");
+                type = argI[0];
+                name = argI[1];
+                argument = new MethodSignature.Argument(type, name);
+                arguments.add(argument);
+            }
         }
 
         return method;
